@@ -4,8 +4,11 @@
 #include <allegro5/keyboard.h>
 #include <allegro5/allegro_image.h>
 
-class Scene;
-class MainMenu;
+#include "LivingObject.h"
+#include "MainMenu.h"
+#include "Object.h"
+#include "Scene.h"
+
 
 bool initallegro()
 {    
@@ -57,7 +60,7 @@ int main()
 
     al_register_event_source(eventqueue, al_get_display_event_source(display));
 
-    Scene* current = new MainMenu();
+    Scene* current = (Scene*) new MainMenu();
 
     while (true)
     {
@@ -67,7 +70,6 @@ int main()
 	        {
                 break;
 	        }
-
         }
         
         al_clear_to_color(bgrcolor);
@@ -81,56 +83,12 @@ int main()
 	return 0;
 }
 
-class Object
-{    
-public:
-    float x = 0;
-    float y = 0;
-    float w = 0;
-    float h = 0;
-
-};
-
-class LivingObject : public Object
-{
-public:
-
-};
-
-class Player : LivingObject
-{
-};
-
-class Scene
-{
-public:
-    ALLEGRO_BITMAP* background = nullptr;
-
-    void draw()
-    {
-        if(background)
-        {
-	        al_draw_bitmap(background, 0, 0, 0);
-        }        
-    }
-    
-};
-
-class MainMenu : Scene
-{
-public:
-	MainMenu()
-	{
-        background = al_load_bitmap("image/MainMenu.png");
-	}
-};
 
 bool coolison_check()
 {
     Object anyobjects;
     LivingObject player;
-
-
+    
     if (
         player.x < anyobjects.x + anyobjects.w &&
         player.x + player.w > anyobjects.x &&

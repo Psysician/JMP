@@ -1,5 +1,5 @@
 #pragma once
-class test
+class Vec2
 {
 };
 
