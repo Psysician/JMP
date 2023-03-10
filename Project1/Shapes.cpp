@@ -1,24 +1,15 @@
 #include "Shapes.h"
 namespace Shapes
 {
-	struct AABB
+	bool AABB::AABBvsAABB(AABB a, AABB b)
 	{
-		int minVec[2]; //unten links
-		int maxVec[2]; //oben rechts
+		if (a.max.x < b.min.x or a.min.x > b.max.x)
+			return false;
 
+		if (a.max.y < b.min.y or a.min.y > b.max.y)
+			return false;
 
-		static bool AABBvsAABB(AABB a, AABB b)
-		{
-
-			if (a.maxVec[0] < b.minVec[0] or a.minVec[0] > b.maxVec[0])
-				return false;
-
-
-			if (a.maxVec[1] < b.minVec[1] or a.minVec[1] > b.maxVec[1])
-				return false;
-
-			return true;
-		}
-	};
+		return true;
+	}
 }
 

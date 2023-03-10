@@ -1,11 +1,16 @@
 #pragma once
+
+#include "Components.h"
+#include "Sprite.h"
+#include "Vec2.h"
+
 class Object
 {
 public:
-    float x = 0;
-    float y = 0;
-    float w = 0;
-    float h = 0;
-
+	Vec2 position;
+	Body body;
+	Sprite sprite;
+	Object();
+	void draw();
 };
 
