@@ -5,13 +5,9 @@
 MainMenu::MainMenu()
 {
 	Object obj;
-	obj.sprite.bitmap = al_load_bitmap("image/MainMenu.png");
-	obj.body.velocity = Vec2(1.0f, 1.0f);
-	if (!obj.sprite.bitmap)
-	{
-		std::cout << "Error loading image" << std::endl;
-		throw 0;
-	}
+	obj.sprite = Sprite("image/MainMenu.png");
+	obj.size = Vec2(1280.0, 720.0);
+	//obj.body.velocity = Vec2(1.0f, 1.0f);
 	layers[0].objects.push_back(obj);
 }
 

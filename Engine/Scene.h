@@ -5,7 +5,7 @@
 #include <allegro5/bitmap.h>
 #include <allegro5/bitmap_draw.h>
 
-#include "Object.h"
+class Object;
 
 class Layer
 {

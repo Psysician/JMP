@@ -8,9 +8,14 @@ class Object
 {
 public:
 	Vec2 position;
+	Vec2 size;
+
 	Body body;
 	Sprite sprite;
+
 	Object();
+	Object(const Object&);
+
 	void draw();
 	void tick(double dt);
 };
