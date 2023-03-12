@@ -60,12 +60,13 @@ void Game::run()
 
 		while (accumulator >= TARGET_DT)
 		{
-			tick(TARGET_DT);
+			tick(1.0);
 			accumulator -= TARGET_DT;
 		}
-		if (accumulator > 0.0001)
-			tick(accumulator);
+
+		tick(accumulator * (1.0 / TARGET_DT));
 		accumulator = 0.0;
+
 
 		process_events();
 		draw();

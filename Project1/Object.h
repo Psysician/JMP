@@ -12,5 +12,6 @@ public:
 	Sprite sprite;
 	Object();
 	void draw();
+	void tick(double dt);
 };
 

@@ -81,7 +81,7 @@ float Vec2::angle(Vec2 a, Vec2 b)
 {
 	float alpha = dotproduct(a, b) / (a.lenght() * b.lenght());
 	alpha = acos(alpha);
-	return (alpha * 180.0f / M_PI);
+	return (alpha * 180.0f / (float)M_PI);
 }
 
 //länge muss 1 sein

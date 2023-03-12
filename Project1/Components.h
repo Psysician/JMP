@@ -5,6 +5,7 @@ class Object;
 
 enum HitboxType
 {
+	None,
 	Rectangular,
 	Circular,
 	Triangle,
@@ -18,6 +19,6 @@ public:
 
 	Body();
 
-	void tick(double dt, Object& obj);
+	void tick(double dt, Object* obj);
 };
 

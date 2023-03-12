@@ -15,7 +15,10 @@ void Layer::draw()
 
 void Layer::tick(double dt)
 {
-
+	for (size_t i = 0; i < objects.size(); i++)
+	{
+		objects[i].tick(dt);
+	}
 }
 
 
