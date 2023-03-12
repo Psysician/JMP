@@ -1,6 +1,4 @@
-#include "Components.h"
-
-#include "Object.h"
+#include "Engine.h"
 
 Body::Body() {
 	hitbox_type = None;

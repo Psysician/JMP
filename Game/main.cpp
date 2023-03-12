@@ -1,8 +1,8 @@
 #include <iostream>
 
-#include "LivingObject.h"
+#include "Engine.h"
+
 #include "MainMenu.h"
-#include "Game.h"
 
 
 int main()

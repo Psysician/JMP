@@ -1,6 +1,8 @@
-#include "Vec2.h"
+#include "Engine.h"
+
 #include <cmath>
 #define M_PI 3.14159265358979323846
+
 Vec2 Vec2::operator + (const Vec2& other) const
 {
 	Vec2 res;
