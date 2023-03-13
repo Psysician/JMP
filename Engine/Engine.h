@@ -7,4 +7,5 @@
 #include "Shapes.h"
 #include "Sprite.h"
 #include "Vec2.h"
+#include "Font.h"
 #include "Misc.h"

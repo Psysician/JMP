@@ -8,6 +8,7 @@ class Object
 {
 	// components
 	Logic* logic;
+
 	size_t data_type;
 	void* data;
 
@@ -18,6 +19,7 @@ public:
 	// components
 	Body body;
 	Sprite sprite;
+	std::unique_ptr<Text> text;
 
 
 	Object();
@@ -28,23 +30,25 @@ public:
 	~Object();
 
 	void set_logic(Logic* _logic);
+	void deallocate_data();
+	void draw();
+	void tick(double dt);
+
 	template <typename T> void set_data(T _data)
 	{
 		if (data)
 			deallocate_data();
 
 		data = malloc(sizeof(T));
-		*(T*)data = _data;
 		ASSERT(data);
+		*(T*)data = _data;
 		data_type = typeid(T).hash_code();
 	}
+
 	template <typename T> T* get_data()
 	{
 		ASSERT(data_type == typeid(T).hash_code());
 		return (T*)data;
 	}
-	void deallocate_data();
-	void draw();
-	void tick(double dt);
 };
 

@@ -4,13 +4,28 @@ namespace Shapes
 {
 	bool AABB::AABBvsAABB(AABB a, AABB b)
 	{
-		if (a.max.x < b.min.x or a.min.x > b.max.x)
-			return false;
+		return (a.min.x < b.max.x && a.max.x > b.min.x) &&
+			(a.min.y < b.max.y && a.max.y > b.min.y);
+	}
 
-		if (a.max.y < b.min.y or a.min.y > b.max.y)
-			return false;
+	bool Circle::circlevscircle(Circle a, Circle b)
+	{
+		Vec2 diff = a.center - b.center;
+		if (diff.lenght() < a.radius + b.radius)
+		{
+			return true;
+		}
+		return false;
+	}
 
-		return true;
+	bool Circle::cricletouch(Circle a, Circle b)
+	{
+		// broken?
+		if (Vec2::dotproduct(a.center - b.center, a.center - b.center) < a.radius * b.radius)
+		{
+			return true;
+		}
+		return false;
 	}
 }
 

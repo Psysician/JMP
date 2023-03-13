@@ -3,6 +3,7 @@
 #include <cmath>
 #define M_PI 3.14159265358979323846
 
+
 Vec2 Vec2::operator + (const Vec2& other) const
 {
 	Vec2 res;
@@ -10,6 +11,7 @@ Vec2 Vec2::operator + (const Vec2& other) const
 	res.y = this->y + other.y;
 	return res;
 }
+
 Vec2 Vec2::operator - (const Vec2& other) const
 {
 	Vec2 res;
@@ -17,7 +19,7 @@ Vec2 Vec2::operator - (const Vec2& other) const
 	res.y = this->y - other.y;
 	return res;
 }
-//Component Product
+
 Vec2 Vec2::operator * (const Vec2& other) const
 {
 	Vec2 res;
@@ -25,6 +27,7 @@ Vec2 Vec2::operator * (const Vec2& other) const
 	res.y = this->y * other.y;
 	return res;
 }
+
 Vec2 Vec2::operator / (const Vec2& other) const
 {
 	Vec2 res;
@@ -46,6 +49,7 @@ Vec2 Vec2::operator + (float scalar) const
 	res.y = this->y + scalar;
 	return res;
 }
+
 Vec2 Vec2::operator - (float scalar) const
 {
 	Vec2 res;
@@ -53,6 +57,7 @@ Vec2 Vec2::operator - (float scalar) const
 	res.y = this->y - scalar;
 	return res;
 }
+
 Vec2 Vec2::operator * (float scalar) const
 {
 	Vec2 res;
@@ -60,6 +65,7 @@ Vec2 Vec2::operator * (float scalar) const
 	res.y = this->y * scalar;
 	return res;
 }
+
 Vec2 Vec2::operator / (float scalar) const
 {
 	Vec2 res;
@@ -90,7 +96,6 @@ float Vec2::angle(Vec2 a, Vec2 b)
 	return (alpha * 180.0f / (float)M_PI);
 }
 
-//länge muss 1 sein
 Vec2 Vec2::normalize() const
 {
 	float c = lenght();

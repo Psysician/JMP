@@ -5,9 +5,13 @@
 Object::Object()
 {
 	logic = nullptr;
+
 	data_type = typeid(void).hash_code();
 	data = nullptr;
+
+	text = nullptr;
 }
+
 Object::Object(Vec2 _position, Vec2 _size)
 {
 	logic = nullptr;
@@ -17,6 +21,7 @@ Object::Object(Vec2 _position, Vec2 _size)
 	position = _position;
 	size = _size;
 }
+
 Object::Object(Logic* _logic)
 {
 	logic = nullptr;
@@ -35,6 +40,8 @@ Object::Object(const Object& o)
 	set_logic(o.logic);
 	body = o.body;
 	sprite = o.sprite;
+	if (o.text)
+		text = std::make_unique<Text>(*o.text);
 }
 
 Object::Object(Vec2 _position, Vec2 _size, Logic* _logic)
@@ -66,6 +73,8 @@ void Object::deallocate_data()
 void Object::draw()
 {
 	sprite.draw(position, size);
+	if (text)
+		text->draw(position);
 }
 
 void Object::tick(double dt)

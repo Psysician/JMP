@@ -1,7 +1,10 @@
 #pragma once
+
 #include "Vec2.h"
+#include "Font.h"
 
 #include <string>
+#include <memory>
 
 class Object;
 
@@ -33,9 +36,17 @@ public:
 
 class Text
 {
-	std::string text;
 public:
-	float size;
+	std::shared_ptr<Font> font;
 
-	Text(std::string _text);
+	std::string text;
+	int size;
+	ALLEGRO_COLOR color;
+	Vec2 offset;
+
+	Text(const Text& t);
+	Text(std::shared_ptr<Font> _font, std::string _text, int _size, ALLEGRO_COLOR _color);
+
+	void draw(Vec2 pos);
+	int width();
 };

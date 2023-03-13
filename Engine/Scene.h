@@ -14,7 +14,6 @@ public:
 
 	Layer();
 
-
 	void draw();
 	void tick(double dt);
 };

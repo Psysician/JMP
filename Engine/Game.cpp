@@ -2,8 +2,12 @@
 
 #include <allegro5/allegro.h>
 #include <allegro5/events.h>
-#include <allegro5/allegro_image.h>
 #include <allegro5/keyboard.h>
+#include <allegro5/allegro_image.h>
+#include <allegro5/allegro_font.h>
+#include <allegro5/allegro_ttf.h>
+#include <allegro5/allegro_primitives.h>
+
 
 void initialize_allegro()
 {
@@ -15,12 +19,18 @@ void initialize_allegro()
 
 	// initialize addons
 	ASSERT(al_init_image_addon());
+	ASSERT(al_init_font_addon());
+	ASSERT(al_init_ttf_addon());
+	ASSERT(al_init_primitives_addon());
 }
 
 void uninitialize_allegro()
 {
 	// shutdown addons
 	al_shutdown_image_addon();
+	al_shutdown_font_addon();
+	al_shutdown_ttf_addon();
+	al_shutdown_primitives_addon();
 
 	// uninstall features
 	al_uninstall_keyboard();
@@ -80,8 +90,7 @@ void Game::process_events()
 	}
 }
 
-ALLEGRO_COLOR bgrcolor = al_map_rgb(0, 0, 0);
-
+const ALLEGRO_COLOR bgrcolor = al_map_rgb(0, 0, 0);
 const double TARGET_DT = 1.0/250.0;
  
 void Game::run()
@@ -117,6 +126,7 @@ void Game::draw()
 	
 	if (current_scene)
 		current_scene->draw();
+
 	
 	al_flip_display();
 }
