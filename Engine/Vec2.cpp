@@ -39,7 +39,6 @@ void Vec2::operator += (const Vec2& other)
 	this->y += other.y;
 }
 
-
 Vec2 Vec2::operator + (float scalar) const
 {
 	Vec2 res;
