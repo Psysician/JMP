@@ -8,9 +8,8 @@ class Object;
 class Logic
 {
 public:
-	virtual void tick(double dt, Object* obj, void* data) = 0;
-	virtual void* allocate();
-	virtual void deallocate(void* data);
+	virtual void object_assigned(Object* obj);
+	virtual void tick(double dt, Object* obj) = 0;
 };
 
 enum HitboxType

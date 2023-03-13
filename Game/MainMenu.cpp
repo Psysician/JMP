@@ -6,23 +6,20 @@ class AntLogic : public Logic
 {
 	struct AntData
 	{
-		float sim_frames = 0;
+		float sim_frames;
+
+		AntData() : sim_frames(0) {}
 	};
 
 public:
-	void* allocate() override
+	void object_assigned(Object* obj) override
 	{
-		return new AntData();
+		obj->set_data(AntData());
 	}
 
-	virtual void deallocate(void* data) override
+	void tick(double dt, Object* obj) override
 	{
-		delete (AntData*)data;
-	}
-
-	void tick(double dt, Object* obj, void* _data) override
-	{
-		AntData* data = (AntData*)_data;
+		AntData* data = obj->get_data<AntData>();
 
 		data->sim_frames += dt;
 		if (data->sim_frames >= 30.0f)

@@ -1,14 +1,17 @@
 #include "Engine.h"
 
+#include <typeinfo>
 
 Object::Object()
 {
 	logic = nullptr;
+	data_type = typeid(void).hash_code();
 	data = nullptr;
 }
 Object::Object(Vec2 _position, Vec2 _size)
 {
 	logic = nullptr;
+	data_type = typeid(void).hash_code();
 	data = nullptr;
 
 	position = _position;
@@ -43,21 +46,21 @@ Object::Object(Vec2 _position, Vec2 _size, Logic* _logic)
 
 Object::~Object()
 {
-	// deallocate data
-	if (logic && data)
-		logic->deallocate(data);
+	if (data)
+		deallocate_data();
 }
 
 void Object::set_logic(Logic* _logic)
 {
-	// deallocate old data if present
-	if (logic && data)
-		logic->deallocate(data);
-
 	logic = _logic;
-	// allocate new data
-	if (_logic)
-		data = logic->allocate();
+
+	if (logic)
+		logic->object_assigned(this);
+}
+
+void Object::deallocate_data()
+{
+	free(data);
 }
 
 void Object::draw()
@@ -68,6 +71,6 @@ void Object::draw()
 void Object::tick(double dt)
 {
 	if (logic)
-		logic->tick(dt, this, data);
+		logic->tick(dt, this);
 	body.tick(dt, this);
 }

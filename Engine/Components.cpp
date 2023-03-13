@@ -2,12 +2,8 @@
 
 #include <string>
 
-void* Logic::allocate()
-{
-	return nullptr;
-}
+void Logic::object_assigned(Object* obj) { }
 
-void Logic::deallocate(void* data) { }
 
 Body::Body() {
 	hitbox_type = None;

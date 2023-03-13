@@ -1,13 +1,14 @@
 #pragma once
 
-#include "Components.h"
-#include "Sprite.h"
 #include "Vec2.h"
+#include "Sprite.h"
+#include "Misc.h"
 
 class Object
 {
 	// components
 	Logic* logic;
+	size_t data_type;
 	void* data;
 
 public:
@@ -26,6 +27,22 @@ public:
 	~Object();
 
 	void set_logic(Logic* _logic);
+	template <typename T> void set_data(T _data)
+	{
+		if (data)
+			deallocate_data();
+
+		data = malloc(sizeof(T));
+		*(T*)data = _data;
+		ASSERT(data);
+		data_type = typeid(T).hash_code();
+	}
+	template <typename T> T* get_data()
+	{
+		ASSERT(data_type == typeid(T).hash_code());
+		return (T*)data;
+	}
+	void deallocate_data();
 	void draw();
 	void tick(double dt);
 };
