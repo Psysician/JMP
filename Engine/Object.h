@@ -51,4 +51,3 @@ public:
 		return (T*)data;
 	}
 };
-

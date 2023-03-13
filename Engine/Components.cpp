@@ -42,4 +42,3 @@ int Text::width()
 {
 	return al_get_text_width(font->get_al_font(size), text.c_str());
 }
-

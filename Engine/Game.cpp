@@ -26,15 +26,6 @@ void initialize_allegro()
 
 void uninitialize_allegro()
 {
-	// shutdown addons
-	al_shutdown_image_addon();
-	al_shutdown_font_addon();
-	al_shutdown_ttf_addon();
-	al_shutdown_primitives_addon();
-
-	// uninstall features
-	al_uninstall_keyboard();
-
 	// uninstall allegro
 	al_uninstall_system();
 }
