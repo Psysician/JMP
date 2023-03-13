@@ -5,6 +5,14 @@
 
 class Object;
 
+class Logic
+{
+public:
+	virtual void tick(double dt, Object* obj, void* data) = 0;
+	virtual void* allocate();
+	virtual void deallocate(void* data);
+};
+
 enum HitboxType
 {
 	None,

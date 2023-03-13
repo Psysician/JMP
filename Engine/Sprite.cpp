@@ -20,12 +20,18 @@ Sprite::Sprite(Sprite& sprite)
 
 Sprite::Sprite(const char* filename)
 {
-	set_bitmap(al_load_bitmap(filename));
+	load_bitmap(filename);
 
 	frame_count = 1;
 	frame = 0;
+}
 
-	DEBUG_ASSERT(bitmap);
+Sprite::Sprite(const char* filename, int _frame_count, int _frame)
+{
+	load_bitmap(filename);
+
+	frame_count = _frame_count;
+	frame = _frame;
 }
 
 Sprite::~Sprite()
@@ -37,18 +43,22 @@ void Sprite::draw(Vec2 pos, Vec2 size)
 	if (!bitmap)
 		return;
 
-	if (frame_count == 1 && frame == 0)
-		al_draw_scaled_bitmap(bitmap,
-			0, 0,							// source x, y
-			(float)width, (float)height,	// source w, h
-			pos.x, pos.y,					// dest   x, y
-			size.x, size.y,					// dest   w, h
-			0
-		);
-	else
-	{
+	float w = (float)(width / frame_count);
 
-	}
+	al_draw_scaled_bitmap(bitmap,
+		w*frame, 0,						// source x, y
+		(float)w, (float)height,		// source w, h
+		pos.x, pos.y,					// dest   x, y
+		size.x, size.y,					// dest   w, h
+		0
+	);
+}
+
+void Sprite::load_bitmap(const char* filename)
+{
+	auto bitmap = al_load_bitmap(filename);
+	ASSERT(bitmap);
+	set_bitmap(bitmap);
 }
 
 void Sprite::set_bitmap(ALLEGRO_BITMAP* _bitmap)
