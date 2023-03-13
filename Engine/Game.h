@@ -4,6 +4,7 @@
 
 class Game
 {
+	static unsigned int instances;
 public:
 	ALLEGRO_DISPLAY* display;
 	ALLEGRO_EVENT_QUEUE* eventqueue;

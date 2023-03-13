@@ -25,7 +25,7 @@ Sprite::Sprite(const char* filename)
 	frame_count = 1;
 	frame = 0;
 
-	ALLEGRO_ASSERT(bitmap);
+	DEBUG_ASSERT(bitmap);
 }
 
 Sprite::~Sprite()
@@ -53,8 +53,7 @@ void Sprite::draw(Vec2 pos, Vec2 size)
 
 void Sprite::set_bitmap(ALLEGRO_BITMAP* _bitmap)
 {
-	if (!_bitmap)
-		throw "Error loading image";
+	DEBUG_ASSERT(_bitmap);
 	this->bitmap = _bitmap;
 	width = al_get_bitmap_width(_bitmap);
 	height = al_get_bitmap_height(_bitmap);
