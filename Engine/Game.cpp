@@ -82,8 +82,8 @@ void Game::process_events()
 
 ALLEGRO_COLOR bgrcolor = al_map_rgb(0, 0, 0);
 
-const double TARGET_DT = 0.01;
-
+const double TARGET_DT = 1.0/250.0;
+ 
 void Game::run()
 {
 	double cur_time = al_get_time();
@@ -98,12 +98,12 @@ void Game::run()
 		// one tick should not exceed TARGET_DT
 		while (frame_time >= TARGET_DT)
 		{
-			tick(1.0);
+			tick(TARGET_DT);
 			frame_time -= TARGET_DT;
 		}
 
 		// tick for the remaining time
-		tick(frame_time * (1.0 / TARGET_DT));
+		tick(frame_time);
 
 		process_events();
 		draw();

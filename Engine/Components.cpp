@@ -11,6 +11,7 @@ Body::Body() {
 
 void Body::tick(double dt, Object* obj)
 {
+	velocity += gravity*dt;
 	obj->position += velocity * dt;
 }
 

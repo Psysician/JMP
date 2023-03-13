@@ -17,6 +17,7 @@ Vec2 Vec2::operator - (const Vec2& other) const
 	res.y = this->y - other.y;
 	return res;
 }
+//Component Product
 Vec2 Vec2::operator * (const Vec2& other) const
 {
 	Vec2 res;
@@ -70,13 +71,17 @@ Vec2 Vec2::operator / (float scalar) const
 
 float Vec2::lenght() const
 {
-
 	return sqrt(this->x * this->x + this->y * this->y);
 }
 
 float Vec2::dotproduct(Vec2 a, Vec2 b)
 {
 	return a.x * b.x + a.y * b.y;
+}
+
+float Vec2::crossproduct(Vec2 a, Vec2 b)
+{
+	return a.x * b.y - a.y * b.x;
 }
 
 float Vec2::angle(Vec2 a, Vec2 b)

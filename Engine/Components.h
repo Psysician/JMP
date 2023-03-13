@@ -24,8 +24,8 @@ class Body
 {
 public:
 	Vec2 velocity;
+	Vec2 gravity;
 	HitboxType hitbox_type;
-
 	Body();
 
 	void tick(double dt, Object* obj);
@@ -39,4 +39,3 @@ public:
 
 	Text(std::string _text);
 };
-

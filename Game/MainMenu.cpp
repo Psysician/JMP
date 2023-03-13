@@ -37,6 +37,7 @@ MainMenu::MainMenu()
 
 	Object AntOne(Vec2(1000.0f, 50.0f), Vec2(16.0 * 5, 16.0 * 5), logic);
 	AntOne.body.velocity = Vec2(-0.5f, 0.0f);
+	AntOne.body.gravity = Vec2(0, 0.1f);
 	AntOne.sprite = Sprite("assets/image/antEnemy.png", 2, 0);
 
 	layers[1].objects.push_back(AntOne);

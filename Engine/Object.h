@@ -14,10 +14,11 @@ class Object
 public:
 	Vec2 position;
 	Vec2 size;
+
 	// components
-	
 	Body body;
 	Sprite sprite;
+
 
 	Object();
 	Object(Vec2 _position, Vec2 _size);

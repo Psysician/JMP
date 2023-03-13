@@ -14,22 +14,3 @@ int main()
 }
 
 
-//bool coolison_check()
-//{
-//	Object anyobjects;
-//	LivingObject player;
-//	
-//	if (
-//		player.x < anyobjects.x + anyobjects.w &&
-//		player.x + player.w > anyobjects.x &&
-//		player.y < anyobjects.y + anyobjects.h &&
-//		player.h + player.y > anyobjects.y
-//		) {
-//		
-//		return true;
-//	}
-//	else {
-//		return false;
-//	}
-//
-//}

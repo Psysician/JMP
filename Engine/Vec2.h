@@ -21,6 +21,7 @@ public:
 
 	float lenght() const;
 	static float dotproduct(Vec2 a, Vec2 b);
+	static float crossproduct(Vec2 a, Vec2 b);
 	static float angle(Vec2 a, Vec2 b);
 	Vec2 normalize() const;
 
